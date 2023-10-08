@@ -10,7 +10,20 @@
 
 {{ rooms?.availableRooms ?? "No Room Available" }}
 
-<div *ngIf="rooms.availableRooms > 0">
-  <BetterInn-rooms-list [rooms]="roomList" />
+<div *ngIf="selectedRoom">
+  {{ selectedRoom | json }}
 </div>
+
+<!-- ADD ROOM -->
+<div>
+  <button class="btn btn-secondary" (click)="addRoom()">Add Room</button>
+</div>
+
+<div *ngIf="rooms.availableRooms > 0">
+  <BetterInn-rooms-list
+    [rooms]="roomList"
+    (selectedRoom)="selectRoom($event)"
+  />
+</div>
+
 <button (click)="toggle()">Toogle</button>

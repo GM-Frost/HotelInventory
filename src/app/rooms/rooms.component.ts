@@ -54,6 +54,8 @@ export class RoomsComponent implements OnInit {
   //Toggle Function
   hideRooms = false;
 
+  selectedRoom!: IRoomList;
+
   toggle() {
     this.hideRooms = !this.hideRooms;
   }
@@ -64,4 +66,25 @@ export class RoomsComponent implements OnInit {
     availableRooms: 10,
     bookedRooms: 5,
   };
+
+  selectRoom(room: IRoomList) {
+    this.selectedRoom = room;
+  }
+
+  //Add room
+  addRoom() {
+    const room: IRoomList = {
+      roomNumber: 5,
+      roomType: 'Suit Room',
+      amenities: 'Air Condition, Free Wifi, TV, Bathroom',
+      price: 1500,
+      photos:
+        'https://plus.unsplash.com/premium_photo-1678752717095-08cd0bd1d7e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      checkIn: new Date('11-Nov-2023'),
+      checkOut: new Date('12-Nov-2023'),
+      rating: 5.0,
+    };
+    //this.roomList.push(room);
+    this.roomList = [...this.roomList, room];
+  }
 }
